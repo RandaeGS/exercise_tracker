@@ -15,6 +15,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
     return Card(
       margin: EdgeInsets.all(8.0),
       elevation: 4.0,
+      color: Color(0xff1C2633),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4.0),
           side: BorderSide(
@@ -23,39 +24,47 @@ class _ExerciseItemState extends State<ExerciseItem> {
           )),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                widget.name,
-                style: TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  widget.name,
+                  style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
-              ),
-              Row(
-                children: [
-                  Text(
-                    "100",
-                    overflow: TextOverflow.fade,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
+                Row(
+                  children: [
+                    Text(
+                      "100",
+                      overflow: TextOverflow.fade,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500, color: Colors.white),
                     ),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () => {},
-                    label: Text("10"),
-                    icon: Icon(Icons.remove),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                      textStyle: TextStyle(color: Colors.white)
-                    ),
-                  )
-                ],
-              )
-            ],
+                    ElevatedButton.icon(
+                      onPressed: () => {},
+                      label: Text(
+                        "10",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      icon: Icon(
+                        Icons.remove,
+                        color: Colors.white,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),
