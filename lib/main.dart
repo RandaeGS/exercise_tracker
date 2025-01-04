@@ -40,15 +40,22 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: Color(0xff333333),
+        title: Text(
+          widget.title,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 25
+          ),
+        ),
+        backgroundColor: Color(0xff1C2633),
         actions: [
           Container(
             margin: EdgeInsets.only(right: 8.0),
             child: ElevatedButton.icon(
               onPressed: () => {},
               style: ButtonStyle(),
-              label: const Text('Add'),
+              label: const Text('Add 10'),
               icon: const Icon(Icons.add),
             ),
           )
@@ -57,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         color: Color(0xff111827),
         child: ListView(
-          children: [ExerciseItem(name: "Chest"),
+          children: [
+            ExerciseItem(name: "Chest"),
             ExerciseItem(name: "Shoulders"),
             ExerciseItem(name: "Legs"),
             ExerciseItem(name: "Back"),
