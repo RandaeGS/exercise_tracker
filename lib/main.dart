@@ -1,3 +1,4 @@
+import 'package:exercise_tracker/exercise_item.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -52,6 +53,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           )
         ],
+      ),
+      body: Container(
+        color: Colors.grey,
+        child: ListView(
+          children: [ExerciseItem(name: "Chest"),
+            ExerciseItem(name: "Shoulders"),
+            ExerciseItem(name: "Legs"),
+            ExerciseItem(name: "Back"),
+            ExerciseItem(name: "Abs"),
+            ExerciseItem(name: "Biceps"),
+            ExerciseItem(name: "Triceps"),
+          ],
+        ),
       ),
     );
   }
