@@ -1,5 +1,8 @@
+import 'package:exercise_tracker/database_helper.dart';
 import 'package:exercise_tracker/exercise_item.dart';
 import 'package:flutter/material.dart';
+
+import 'exercise_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +39,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<Exercise> exercises = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadExercises();
+  }
+
+  Future<void> loadExercises() async {
+    final loadedExercises = await DatabaseHelper.instance.getAllExercises();
+    setState(() {
+      exercises = loadedExercises;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
