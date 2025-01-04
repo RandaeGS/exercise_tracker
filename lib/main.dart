@@ -12,17 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.white12,
-        appBarTheme: AppBarTheme(
-
-        ),
-        textTheme: TextTheme(
-
-        ),
+        appBarTheme: AppBarTheme(),
+        textTheme: TextTheme(),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
-
       ),
       home: const MyHomePage(title: 'Exercise Tracker'),
     );
@@ -39,11 +35,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.lightBlue,
+        actions: [
+          Container(
+            margin: EdgeInsets.only(right: 8.0),
+            child: ElevatedButton.icon(
+              onPressed: () => {},
+              style: ButtonStyle(),
+              label: const Text('Add'),
+              icon: const Icon(Icons.add),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
