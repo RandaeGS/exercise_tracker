@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Color(0xff333333),
         actions: [
           Container(
             margin: EdgeInsets.only(right: 8.0),
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Container(
-        color: Colors.grey,
+        color: Color(0xff111827),
         child: ListView(
           children: [ExerciseItem(name: "Chest"),
             ExerciseItem(name: "Shoulders"),
