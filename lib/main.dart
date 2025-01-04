@@ -43,10 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           widget.title,
           style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 25
-          ),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
         ),
         backgroundColor: Color(0xff1C2633),
         actions: [
@@ -54,9 +51,14 @@ class _MyHomePageState extends State<MyHomePage> {
             margin: EdgeInsets.only(right: 8.0),
             child: ElevatedButton.icon(
               onPressed: () => {},
-              style: ButtonStyle(),
-              label: const Text('Add 10'),
-              icon: const Icon(Icons.add),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xff111827),
+              ),
+              label: const Text(
+                'Add 10',
+                style: TextStyle(color: Colors.white, fontSize: 15),
+              ),
+              icon: const Icon(Icons.add, color: Colors.white),
             ),
           )
         ],
