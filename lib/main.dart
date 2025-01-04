@@ -84,16 +84,17 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         color: Color(0xff111827),
-        child: ListView(
-          children: [
-            ExerciseItem(name: "Chest"),
-            ExerciseItem(name: "Shoulders"),
-            ExerciseItem(name: "Legs"),
-            ExerciseItem(name: "Back"),
-            ExerciseItem(name: "Abs"),
-            ExerciseItem(name: "Biceps"),
-            ExerciseItem(name: "Triceps"),
-          ],
+        child: ListView.builder(
+          itemCount: exercises.length,
+          itemBuilder: (context, index) {
+            final exercise = exercises[index];
+            return ExerciseItem(
+              id: exercise.id,
+              name: exercise.name,
+              amount: exercise.amount,
+              removeAmount: exercise.removeAmount,
+            );
+          },
         ),
       ),
     );

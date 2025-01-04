@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 
 class ExerciseItem extends StatefulWidget {
   final String name;
+  final int amount;
+  final int removeAmount;
+  final int id;
 
-  const ExerciseItem({super.key, required this.name});
+  const ExerciseItem(
+      {super.key,
+      required this.name,
+      required this.amount,
+      required this.removeAmount,
+      required this.id});
 
   @override
   State<ExerciseItem> createState() => _ExerciseItemState();
@@ -50,7 +58,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
                       child: Padding(
                         padding: EdgeInsets.all(6),
                         child: Text(
-                          "100",
+                          "${widget.amount}",
                           overflow: TextOverflow.fade,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -62,7 +70,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
                     ElevatedButton.icon(
                       onPressed: () => {},
                       label: Text(
-                        "10",
+                        "${widget.removeAmount}",
                         style: TextStyle(color: Colors.white),
                       ),
                       icon: Icon(
@@ -72,7 +80,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         minimumSize: Size.square(36),
-                        maximumSize: Size(85,36),
+                        maximumSize: Size(85, 36),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(6),
