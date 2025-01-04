@@ -39,11 +39,25 @@ class _ExerciseItemState extends State<ExerciseItem> {
                 ),
                 Row(
                   children: [
-                    Text(
-                      "100",
-                      overflow: TextOverflow.fade,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500, color: Colors.white),
+                    Container(
+                      height: 36,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border(
+                              left: BorderSide(color: Colors.white60),
+                              top: BorderSide(color: Colors.white60),
+                              bottom: BorderSide(color: Colors.white60))),
+                      child: Padding(
+                        padding: EdgeInsets.all(6),
+                        child: Text(
+                          "100",
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                     ElevatedButton.icon(
                       onPressed: () => {},
@@ -57,6 +71,12 @@ class _ExerciseItemState extends State<ExerciseItem> {
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
+                        minimumSize: Size.square(36),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(6),
+                              bottomRight: Radius.circular(6)),
+                        ),
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       ),
