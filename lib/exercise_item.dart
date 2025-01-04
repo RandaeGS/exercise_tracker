@@ -72,6 +72,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         minimumSize: Size.square(36),
+                        maximumSize: Size(85,36),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(6),
