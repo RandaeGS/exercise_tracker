@@ -41,7 +41,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
 
   Future<void> decreaseRepAmount() async {
 
-    if (widget.amount - widget.removeAmount < 0) return;
+    if (currentAmount - widget.removeAmount < 0) return;
 
     final updatedExercise = Exercise(
         id: widget.id,
@@ -101,10 +101,14 @@ class _ExerciseItemState extends State<ExerciseItem> {
                       height: 36,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          border: Border(
-                              left: BorderSide(color: Colors.white60),
-                              top: BorderSide(color: Colors.white60),
-                              bottom: BorderSide(color: Colors.white60))),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(6),
+                          bottomLeft: Radius.circular(6)
+                        ),
+                        border: Border.all(
+                          color: Colors.white
+                        )
+                      ),
                       child: Padding(
                         padding: EdgeInsets.all(6),
                         child: Text(
