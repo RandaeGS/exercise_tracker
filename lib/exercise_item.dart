@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'database_helper.dart';
+import 'exercise_model.dart';
+
 class ExerciseItem extends StatefulWidget {
   final String name;
   final int amount;
@@ -18,6 +21,53 @@ class ExerciseItem extends StatefulWidget {
 }
 
 class _ExerciseItemState extends State<ExerciseItem> {
+  late int currentAmount;
+
+  @override
+  void initState() {
+    super.initState();
+    currentAmount = widget.amount;
+  }
+
+  @override
+  void didUpdateWidget(covariant ExerciseItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.amount != widget.amount){
+      setState(() {
+        currentAmount = widget.amount;
+      });
+    }
+  }
+
+  Future<void> decreaseRepAmount() async {
+
+    if (widget.amount - widget.removeAmount < 0) return;
+
+    final updatedExercise = Exercise(
+        id: widget.id,
+        name: widget.name,
+        amount: currentAmount - widget.removeAmount,
+        removeAmount: widget.removeAmount);
+
+    await DatabaseHelper.instance.update(updatedExercise);
+
+    if (mounted) {
+      setState(() {
+        currentAmount = updatedExercise.amount;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            '¡10 reps removed from ${widget.name}!',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color(0xff1C2633),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -58,7 +108,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
                       child: Padding(
                         padding: EdgeInsets.all(6),
                         child: Text(
-                          "${widget.amount}",
+                          "$currentAmount",
                           overflow: TextOverflow.fade,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -68,7 +118,7 @@ class _ExerciseItemState extends State<ExerciseItem> {
                       ),
                     ),
                     ElevatedButton.icon(
-                      onPressed: () => {},
+                      onPressed: decreaseRepAmount,
                       label: Text(
                         "${widget.removeAmount}",
                         style: TextStyle(color: Colors.white),
