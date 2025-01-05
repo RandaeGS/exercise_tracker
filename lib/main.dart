@@ -1,6 +1,7 @@
 import 'package:exercise_tracker/database_helper.dart';
 import 'package:exercise_tracker/exercise_item.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 import 'exercise_model.dart';
 
@@ -40,6 +41,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Exercise> exercises = [];
+  final random = Random();
 
   @override
   void initState() {
@@ -53,6 +55,36 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       exercises = loadedExercises;
     });
+  }
+
+  Future<void> incrementRandomExercise() async {
+    if (exercises.isEmpty) return;
+
+    final randomIndex = random.nextInt(exercises.length);
+    final selectedExercise = exercises[randomIndex];
+
+    final updatedExercise = Exercise(
+        id: selectedExercise.id,
+        name: selectedExercise.name,
+        amount: selectedExercise.amount + 10,
+        removeAmount: selectedExercise.removeAmount);
+
+    await DatabaseHelper.instance.update(updatedExercise);
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            '¡10 reps added to ${selectedExercise.name}!',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color(0xff1C2633),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
+
+    loadExercises();
   }
 
   @override
@@ -69,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             margin: EdgeInsets.only(right: 8.0),
             child: ElevatedButton.icon(
-              onPressed: () => {},
+              onPressed: incrementRandomExercise,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xff111827),
               ),
